@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ExpenseList from './components/ExpenseList';
 import ExpenseForm from './components/ExpenseForm';
@@ -11,9 +11,17 @@ const initialExpenses = [
   { id: uuid(), charge: 'credit card bill', amount: 1200 }
 ];
 
-console.log(initialExpenses);
-
 function App() {
+  // console.log(useState());
+
+  // const result = useState(initialExpenses);
+  // const expenses = result[0];
+  // const setExpenses = result[1];
+
+  const [expenses, setExpenses] = useState(initialExpenses);
+  console.log(expenses);
+  console.log(setExpenses);
+
   return (
     <>
       <Alert />
