@@ -12,21 +12,25 @@ const initialExpenses = [
 ];
 
 function App() {
-  // console.log(useState());
-
-  // const result = useState(initialExpenses);
-  // const expenses = result[0];
-  // const setExpenses = result[1];
-
   const [expenses, setExpenses] = useState(initialExpenses);
-  console.log(expenses);
-  console.log(setExpenses);
 
   return (
     <>
       <Alert />
-      <ExpenseForm />
-      <ExpenseList />
+      <h1>budget calculator</h1>
+      <main className='App'>
+        <ExpenseForm />
+        <ExpenseList expenses={expenses} />
+      </main>
+      <h1>
+        total spending:{' '}
+        <span className='total'>
+          £
+          {expenses.reduce((accumilator, currentVal) => {
+            return (accumilator += currentVal.amount);
+          }, 0)}
+        </span>
+      </h1>
     </>
   );
 }
