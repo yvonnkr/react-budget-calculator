@@ -27,7 +27,15 @@ function App() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submited....');
+
+    if (charge !== '' && amount > 0) {
+      setExpenses([...expenses, { id: uuid(), charge, amount }]);
+      setCharge('');
+      setAmount('');
+    } else {
+      //alert
+      console.log('invalid input');
+    }
   };
 
   return (
@@ -49,7 +57,7 @@ function App() {
         <span className='total'>
           £
           {expenses.reduce((accumilator, currentVal) => {
-            return (accumilator += currentVal.amount);
+            return (accumilator += parseInt(currentVal.amount));
           }, 0)}
         </span>
       </h1>
